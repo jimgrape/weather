@@ -43,7 +43,7 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         if re.match(r'\d+日（\w{2}）', data):
             self.day=re.match(r'(\d+)日（\w{2}）', data).group(1)
-            self.date=re.match(r'(\d+)日（(\w{2})）', data).group(2)
+            add_key(self.weather, self.day, 'date', re.match(r'(\d+)日（(\w{2})）', data).group(2))
             self.find_info=True
             self.find_high=True
             self.find_low=True
