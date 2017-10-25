@@ -18,6 +18,20 @@ def get_attrs(attrs, name):
         for n in attrs:
             if n[0]==name:
                 return n[1]
+#def sort_dict(mydict):
+#    keys=mydict.keys()
+#    keys.sort()
+#    return [dict[key] for key in keys]
+
+def print_result(myweather):
+    for day, data in myweather.items():
+        print('%s日, %s' % (day, data['date']))
+        if 'high' in data:
+            print('%s: %s /%s' % (data['info'], data['high'], data['low']))
+        else:
+            print('%s: %s' % (data['info'], data['low']))
+        print('%s: %s' % (data['wind'], data['level']))
+        print()
 
 class MyHTMLParser(HTMLParser):
     def __init__(self):
@@ -86,4 +100,4 @@ parser=MyHTMLParser()
 print('[南京天气]\n')
 with request.urlopen('http://www.weather.com.cn/weather/101190101.shtml') as f:
     parser.feed(f.read().decode('utf-8'))
-    print(parser.weather)
+    print_result(parser.weather)
