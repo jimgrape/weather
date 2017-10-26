@@ -4,6 +4,7 @@
 from html.parser import HTMLParser
 from html.entities import name2codepoint
 from urllib import request
+from collections import OrderedDict
 import re
 
 
@@ -41,7 +42,7 @@ class MyHTMLParser(HTMLParser):
         self.find_low=False
         self.find_wind=False
         self.find_level=False
-        self.weather={}
+        self.weather=OrderedDict()
     
     def handle_starttag(self, tag, attrs):
         # 4.风向
