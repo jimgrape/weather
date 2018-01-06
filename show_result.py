@@ -2,8 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from weather import myweather
+import sys
 
 def print_result(myweather, num=2):
+    if num == 0:
+        for day, data in myweather.items():
+            print('%s: %s°, %s: %s' % (data['info'], data['low'], data['wind'], data['level']))
+            return
     if num>len(myweather):
         num=len(myweather)
     print('----------%s天气----------\n' % city)
@@ -12,7 +17,7 @@ def print_result(myweather, num=2):
     for day, data in myweather.items():
         print('%s日, %s' % (day, data['date']))
         if 'high' in data:
-            print('%s: %s° /%s°' % (data['info'], data['high'], data['low']))
+            print('%s: %s°/%s°' % (data['info'], data['high'], data['low']))
         else:
             print('%s: %s°' % (data['info'], data['low']))
         print('%s: %s' % (data['wind'], data['level']))
@@ -38,4 +43,9 @@ city='南京'
 
 if __name__=='__main__':
     #print_comment(myweather)
-    print_result(myweather, 2)
+    if len(sys.argv)>=2:
+        num=int(sys.argv[1])
+        print_result(myweather, num)
+    else:
+        print_result(myweather)
+
