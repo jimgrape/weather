@@ -57,7 +57,7 @@ class MyHTMLParser(HTMLParser):
                 self.find_info=False
             # 2.高温
             if self.find_high and self.lasttag=='span':
-                add_key(self.weather, self.day, 'low', data[:-1])
+                add_key(self.weather, self.day, 'high', data[:-1])
                 self.find_high=False
             # 3.低温
             if self.find_low and self.lasttag=='i':
