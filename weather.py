@@ -90,3 +90,5 @@ city_code='101190101'
 with request.urlopen('http://www.weather.com.cn/weather/%s.shtml' % city_code) as f:
     parser.feed(f.read().decode('utf-8'))
 myweather=parser.weather
+if __name__ == '__main__':
+    print(myweather)
