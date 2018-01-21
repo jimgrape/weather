@@ -1,41 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# 日期、相对天数、天气情况、高温、低温、风向、风级
 from weather2 import myweather
 import sys
 
 def print_result(myweather, num=2):
     if num == 0:
-        print('%s, %s:%s/%s' % (
+        print('%s: %s°/%s°, %s: %s' % (myweather[0]['info'], myweather[0]['high'], myweather[0]['low'], myweather[0]['wind'],myweather[0]['level']))
+        return
     if num>len(myweather):
         num=len(myweather)
     print('----------%s天气----------\n' % city)
-
     n=0
-    for day, data in myweather:
-        print('%s日, %s' % (day, data['date']))
-        if 'high' in data:
-            print('%s: %s°/%s°' % (data['info'], data['high'], data['low']))
-        else:
-            print('%s: %s°' % (data['info'], data['low']))
-        print('%s: %s' % (data['wind'], data['level']))
+    for item in myweather:
+        print('%s, %s' % (item['date'], item['rela']))
+        print('%s: %s°/%s°' % (item['info'], item['high'], item['low']))
+        print('%s: %s' % (item['wind'], item['level']))
         print()
         n+=1
         if n>num:
             return
-
-def print_comment(myweather):
-    n=0
-    for day, data in myweather.items():
-        if n==1:
-            tom_high, tom_low=int(data['high']), int(data['low'])
-            tem_diff=int(data['high'])-int(data['low'])
-            if tem_diff>15:
-                print('【明天温差高达%d°，小心感冒】\n' % tem_diff)
-            if '雨' in data['info']:
-                print('【明天%s，记得带伞】\n' % data['info'])
-            return
-        n+=1
 
 city='南京'
 
