@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # 日期、相对天数、天气情况、高温、低温、风向、风级
-from weather2 import myweather
+from weather import myweather
 import sys
 
 def print_result(myweather, num=2):
