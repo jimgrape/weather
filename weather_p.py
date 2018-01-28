@@ -7,7 +7,7 @@ import sys
 
 def print_result(myweather, num=2):
     if num == 0:
-        print('%s: %s°/%s°, %s: %s' % (myweather[0]['info'], myweather[0]['high'], myweather[0]['low'], myweather[0]['wind'],myweather[0]['level']))
+        print('%s: %s℃ /%s℃, %s: %s' % (myweather[0]['info'], myweather[0]['high'], myweather[0]['low'], myweather[0]['wind'],myweather[0]['level']))
         return
     if num>len(myweather):
         num=len(myweather)
@@ -15,7 +15,7 @@ def print_result(myweather, num=2):
     n=0
     for item in myweather:
         print('%s, %s' % (item['date'], item['rela']))
-        print('%s: %s°/%s°' % (item['info'], item['high'], item['low']))
+        print('%s: %s℃ /%s℃' % (item['info'], item['high'], item['low']))
         print('%s: %s' % (item['wind'], item['level']))
         print()
         n+=1
